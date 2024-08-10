@@ -6,10 +6,10 @@ const getProductsByUser = async (req, res) => {
     const userId = req.params.userId;
     console.log(userId);
     
-    const objectId = new mongoose.Types.ObjectId(userId);
 
-    const products = await Product.find({ user: objectId })
-                                  .sort({ createdAt: -1 }); 
+    const objectId =new mongoose.Types.ObjectId(userId);
+
+    const products = await Product.find({ user: objectId });
 
     if (!products.length) {
       return res.status(404).json({ message: 'No products found for this user' });
